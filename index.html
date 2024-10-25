@@ -59,11 +59,54 @@
         .gallery img {
             width: 30%;
             border-radius: 5px;
+            cursor: pointer;
             transition: transform 0.2s;
         }
 
         .gallery img:hover {
             transform: scale(1.05);
+        }
+
+        /* Modal Style */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            padding-top: 60px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+        }
+
+        .modal-content:hover {
+            transform: scale(1.05);
+        }
+
+        .close {
+            position: absolute;
+            top: 30px;
+            right: 35px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
         }
 
         footer {
@@ -97,40 +140,61 @@
     <section class="property-section">
         <h2>Imóvel 1: Aclimação</h2>
         <div class="property-description">
-            <p>Este exclusivo apartamento está localizado no bairro da Aclimação. Situado no 1º andar, o imóvel conta com a vantagem de ser o único por andar, oferecendo total privacidade e tranquilidade.</p>
+            <p>Este exclusivo apartamento está localizado no bairro da Aclimação, em um edifício de alto padrão. Situado no 1º andar, o imóvel conta com a vantagem de ser o único por andar, oferecendo total privacidade e tranquilidade.</p>
             <p>Com 3 dormitórios espaçosos, o imóvel é ideal para famílias que buscam conforto e praticidade. A taxa de condomínio é de R$350, proporcionando excelente custo-benefício para a região.</p>
             <p>A localização privilegiada oferece fácil acesso a parques, escolas, comércio e serviços, garantindo uma excelente qualidade de vida.</p>
         </div>
         <section class="gallery">
             <h3>Imagens do Imóvel</h3>
-            <img src="WhatsApp Image 2024-10-23 at 20.55.16.jpeg" alt="Imagem do imóvel 1">
-            <img src="WhatsApp Image 2024-10-23 at 20.55.29.jpeg" alt="Imagem do imóvel 2">
-            <img src="WhatsApp Image 2024-10-23 at 20.55.40.jpeg" alt="Imagem do imóvel 3">
-            <img src="WhatsApp Image 2024-10-23 at 20.55.50.jpeg" alt="Imagem do imóvel 4">
-            <img src="WhatsApp Image 2024-10-23 at 20.56.00.jpeg" alt="Imagem do imóvel 5">
+            <img src="WhatsApp Image 2024-10-23 at 20.55.16.jpeg" alt="Imagem do imóvel 1" class="gallery-img">
+            <img src="WhatsApp Image 2024-10-23 at 20.55.29.jpeg" alt="Imagem do imóvel 2" class="gallery-img">
+            <img src="WhatsApp Image 2024-10-23 at 20.55.40.jpeg" alt="Imagem do imóvel 3" class="gallery-img">
+            <img src="WhatsApp Image 2024-10-23 at 20.55.50.jpeg" alt="Imagem do imóvel 4" class="gallery-img">
+            <img src="WhatsApp Image 2024-10-23 at 20.56.00.jpeg" alt="Imagem do imóvel 5" class="gallery-img">
         </section>
     </section>
 
-    <!-- Seção para o segundo imóvel (pode adicionar mais conforme necessário) -->
-    <section class="property-section">
-        <h2>Imóvel 2: Vila Mariana</h2>
-        <div class="property-description">
-            <p>Este apartamento moderno está localizado no coração da Vila Mariana, uma das regiões mais desejadas de São Paulo. Com 2 dormitórios, o imóvel é ideal para jovens casais ou profissionais que buscam praticidade e conforto.</p>
-            <p>A taxa de condomínio é de R$500, e o prédio oferece diversas comodidades como piscina, academia e salão de festas.</p>
-            <p>A proximidade ao metrô e ao Parque do Ibirapuera é um grande diferencial deste imóvel.</p>
-        </div>
-        <section class="gallery">
-            <h3>Imagens do Imóvel</h3>
-            <img src="imovel2-1.jpg" alt="Imagem do imóvel 2-1">
-            <img src="imovel2-2.jpg" alt="Imagem do imóvel 2-2">
-            <img src="imovel2-3.jpg" alt="Imagem do imóvel 2-3">
-        </section>
-    </section>
+    <!-- Modal for Image Zoom -->
+    <div id="myModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="imgZoom">
+    </div>
 </div>
 
 <footer>
     <p>E&E Imóveis © 2024 - Todos os direitos reservados</p>
 </footer>
+
+<script>
+    // Get the modal
+    var modal = document.getElementById("myModal");
+
+    // Get the image and insert it inside the modal
+    var modalImg = document.getElementById("imgZoom");
+
+    var images = document.querySelectorAll(".gallery-img");
+    images.forEach(function (img) {
+        img.onclick = function () {
+            modal.style.display = "block";
+            modalImg.src = this.src;
+        };
+    });
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function () {
+        modal.style.display = "none";
+    };
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    };
+</script>
 
 </body>
 </html>
