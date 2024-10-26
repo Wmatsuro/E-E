@@ -9,131 +9,91 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f8f8f8;
+            background-color: #f5f5f5;
+            color: #333;
         }
-        .header {
+        header {
             background-color: #4CAF50;
-            color: #fff;
+            color: white;
             padding: 15px;
             text-align: center;
         }
-        .content {
-            padding: 20px;
+        .container {
+            width: 90%;
             max-width: 800px;
-            margin: auto;
+            margin: 20px auto;
         }
-        h1, h2 {
-            color: #333;
-        }
-        .contact-info, .property-details {
-            background-color: #fff;
+        .card {
+            background-color: white;
             padding: 20px;
-            margin-bottom: 20px;
+            margin: 20px 0;
             border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
-        .property-images {
-            display: flex;
-            flex-wrap: wrap;
+        .card h2 {
+            margin-top: 0;
+        }
+        .images-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
             gap: 10px;
         }
-        .property-images img {
+        .images-grid img {
             width: 100%;
-            max-width: 150px;
+            height: auto;
+            border-radius: 4px;
             cursor: pointer;
-            border-radius: 8px;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s;
         }
-        .property-images img:hover {
+        .images-grid img:hover {
             transform: scale(1.05);
         }
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1;
-            padding-top: 60px;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0, 0, 0, 0.8);
+        .contact-info {
+            margin-top: 10px;
+            font-size: 0.9em;
+            color: #555;
         }
-        .modal-content {
-            margin: auto;
-            display: block;
-            width: 80%;
-            max-width: 600px;
-        }
-        .close {
-            position: absolute;
-            top: 20px;
-            right: 35px;
-            color: #fff;
-            font-size: 40px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-        @media (max-width: 600px) {
-            .property-images img {
-                max-width: 100px;
-            }
-            .modal-content {
-                width: 100%;
-            }
+        .contact-info a {
+            color: #4CAF50;
+            text-decoration: none;
         }
     </style>
 </head>
 <body>
-    <div class="header">
-        <h1>Bem-vindo(a) ao E&E Imóveis</h1>
-        <p>Confira as imagens do imóvel disponível</p>
-    </div>
-    
-    <div class="content">
-        <!-- Contatos -->
+
+<header>
+    <h1>Bem-vindo ao site da E&E Imóveis</h1>
+    <p>Confira as imagens do imóvel disponível</p>
+</header>
+
+<div class="container">
+    <section class="card">
+        <h2>Entre em Contato</h2>
+        <p><strong>Creci:</strong> 56080</p>
         <div class="contact-info">
-            <h2>Entre em Contato</h2>
-            <p><strong>Creci:</strong> 56080</p>
-            <p><strong>Email:</strong> <a href="eduardol21sampaio@gmail.com">eduardol21sampaio@gmail.com</a></p>
-            <p><strong>Email:</strong> <a href="mailto:edna.sampaio@uol.com.br">edna.sampaio@uol.com.br</a></p>
-            <p><strong>WhatsApp Eduardo Sampaio:</strong> <a href="https://wa.me/(11)947094356" target="_blank">55 (11) 94709-4356</a></p>
-            <p><strong>WhatsApp Edna Sampaio:</strong> <a href="https://wa.me/(11)961948000" target="_blank">55 (11) 96194-8000</a></p>
+            <p>Email: <a href="mailto:eduardol21sampaio@gmail.com">eduardol21sampaio@gmail.com</a></p>
+            <p>Email: <a href="mailto:edna.sampaio@uol.com.br">edna.sampaio@uol.com.br</a></p>
+            <p>WhatsApp Eduardo Sampaio: <a href="https://wa.me/5511947094356" target="_blank">55 (11) 94709-4356</a></p>
+            <p>WhatsApp Edna Sampaio: <a href="https://wa.me/5511961948000" target="_blank">55 (11) 96194-8000</a></p>
         </div>
-        
-        <!-- Detalhes do Imóvel -->
-        <div class="property-details">
-            <h2>Imóveis Disponíveis</h2>
-            <h3>Imóvel localizado na Aclimação</h3>
-            <p>1º andar, 1 por andar, R$350 de condomínio.</p>
-            <p><strong>Valor do Imóvel:</strong> R$ 750.000,00</p>
-            <p>Conforto, privacidade e excelente localização em um dos bairros mais procurados de São Paulo.</p>
-        </div>
+    </section>
 
-        <!-- Galeria de Imagens -->
-        <div class="property-images">
-            <h2>Imagens do Imóvel</h2>
-            <img src="imagens/imagem1.jpg" alt="Imagem do Imóvel 1" onclick="openModal(this.src)">
-            <img src="imagens/imagem2.jpg" alt="Imagem do Imóvel 2" onclick="openModal(this.src)">
-            <img src="imagens/imagem3.jpg" alt="Imagem do Imóvel 3" onclick="openModal(this.src)">
-            <img src="imagens/imagem4.jpg" alt="Imagem do Imóvel 4" onclick="openModal(this.src)">
-        </div>
-    </div>
-    
-    <!-- Modal para Zoom nas Imagens -->
-    <div id="imageModal" class="modal">
-        <span class="close" onclick="closeModal()">&times;</span>
-        <img class="modal-content" id="modalImage">
-    </div>
+    <section class="card">
+        <h2>Imóveis Disponíveis</h2>
+        <p><strong>Imóvel localizado na Aclimação</strong><br>
+           1º andar, 1 por andar, R$350 de condomínio.<br>
+           <strong>Valor do Imóvel:</strong> R$ 550.000,00</p>
+        <p>Conforto, privacidade e excelente localização em um dos bairros mais procurados de São Paulo.</p>
 
-    <script>
-        function openModal(src) {
-            document.getElementById("imageModal").style.display = "block";
-            document.getElementById("modalImage").src = src;
-        }
-        function closeModal() {
-            document.getElementById("imageModal").style.display = "none";
-        }
-    </script>
+        <h3>Imagens do Imóvel</h3>
+        <div class="images-grid">
+            <img src="WhatsApp%20Image%202024-10-23%20at%2020.55.16.jpg" alt="Imagem do Imóvel 1">
+            <img src="WhatsApp%20Image%202024-10-23%20at%2020.55.29.jpg" alt="Imagem do Imóvel 2">
+            <img src="WhatsApp%20Image%202024-10-23%20at%2020.55.40.jpg" alt="Imagem do Imóvel 3">
+            <img src="WhatsApp%20Image%202024-10-23%20at%2020.55.50.jpg" alt="Imagem do Imóvel 4">
+        </div>
+    </section>
+</div>
+
 </body>
 </html>
