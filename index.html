@@ -3,223 +3,136 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Confira as imagens e detalhes dos imóveis disponíveis.">
-    <title>E&E Imóveis - Lista de Imóveis</title>
+    <title>E&E Imóveis</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f9;
+            background-color: #f8f8f8;
         }
-
-        header {
+        .header {
             background-color: #4CAF50;
-            color: white;
+            color: #fff;
             padding: 15px;
             text-align: center;
         }
-
+        .content {
+            padding: 20px;
+            max-width: 800px;
+            margin: auto;
+        }
         h1, h2 {
             color: #333;
         }
-
-        .container {
-            width: 80%;
-            margin: auto;
+        .contact-info, .property-details {
+            background-color: #fff;
             padding: 20px;
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
-
-        .contact {
-            margin: 20px 0;
-        }
-
-        .contact a {
-            color: #4CAF50;
-            text-decoration: none;
-        }
-
-        .property-section {
-            margin-top: 40px;
-        }
-
-        .property-description {
-            line-height: 1.6;
-        }
-
-        .gallery {
+        .property-images {
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
         }
-
-        .gallery img {
-            width: 30%;
-            border-radius: 5px;
+        .property-images img {
+            width: 100%;
+            max-width: 150px;
             cursor: pointer;
-            transition: transform 0.2s;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
         }
-
-        .gallery img:hover {
+        .property-images img:hover {
             transform: scale(1.05);
         }
-
-        /* Modal Style */
         .modal {
             display: none;
             position: fixed;
-            z-index: 1000;
+            z-index: 1;
             padding-top: 60px;
             left: 0;
             top: 0;
             width: 100%;
             height: 100%;
             overflow: auto;
-            background-color: rgba(0, 0, 0, 0.9);
+            background-color: rgba(0, 0, 0, 0.8);
         }
-
         .modal-content {
             margin: auto;
             display: block;
             width: 80%;
-            max-width: 700px;
+            max-width: 600px;
         }
-
-        .modal-content:hover {
-            transform: scale(1.05);
-        }
-
         .close {
             position: absolute;
-            top: 30px;
+            top: 20px;
             right: 35px;
-            color: white;
+            color: #fff;
             font-size: 40px;
             font-weight: bold;
             cursor: pointer;
         }
-
-        .close:hover,
-        .close:focus {
-            color: #bbb;
-            text-decoration: none;
-            cursor: pointer;
-        }
-
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 10px 0;
-            position: relative;
-            bottom: 0;
-            width: 100%;
-            margin-top: 30px;
-        }
-
-        /* Estilos Responsivos para Smartphones */
-        @media (max-width: 768px) {
-            .container {
-                width: 95%;
+        @media (max-width: 600px) {
+            .property-images img {
+                max-width: 100px;
             }
-
-            .gallery img {
-                width: 100%; /* Cada imagem ocupará 100% da largura em dispositivos móveis */
-            }
-
-            h1, h2 {
-                font-size: 1.5rem; /* Tamanhos de texto menores em telas pequenas */
-            }
-
-            p {
-                font-size: 1rem;
-            }
-
-            .property-description {
-                font-size: 1rem;
+            .modal-content {
+                width: 100%;
             }
         }
     </style>
 </head>
 <body>
-
-<header>
-    <h1>Bem-vindo ao site da E&E Imóveis</h1>
-    <p>Confira as imagens dos imóveis disponíveis</p>
-</header>
-
-<div class="container">
-    <section class="contact">
-        <h2>Entre em Contato</h2>
-        <p>Email: <a href="mailto:eduardol21sampaio@gmail.com">edna.sampaio@uol.com.br</a></p>
-        <p>Email: <a href="mailto:edna.sampaio@uol.com.br">edna.sampaio@uol.com.br</a></p>
-        <p>WhatsApp Eduardo Sampaio: <a href="https://wa.me/5511947094356">(11) 94709-4356</a></p>
-        <p>WhatsApp Edna Sampaio: <a href="https://wa.me/5511961948000">(11) 96194-8000</a></p>
-       
-    </section>
-
-    <!-- Seção do primeiro imóvel -->
-    <section class="property-section">
-        <h2>Imóvel 1: Aclimação</h2>
-        <div class="property-description">
-            <p>Este exclusivo apartamento está localizado no bairro da Aclimação. Situado no 1º andar, o imóvel conta com a vantagem de ser o único por andar, oferecendo total privacidade e tranquilidade.</p>
-            <p>Com 3 dormitórios espaçosos, o imóvel é ideal para famílias que buscam conforto e praticidade. A taxa de condomínio é de R$350, proporcionando excelente custo-benefício para a região.</p>
-            <p>A localização privilegiada oferece fácil acesso a parques, escolas, comércio e serviços, garantindo uma excelente qualidade de vida.</p>
-        </div>
-        <section class="gallery">
-            <h3>Imagens do Imóvel</h3>
-            <img src="WhatsApp Image 2024-10-23 at 20.55.16.jpeg" alt="Imagem do imóvel 1" class="gallery-img">
-            <img src="WhatsApp Image 2024-10-23 at 20.55.29.jpeg" alt="Imagem do imóvel 2" class="gallery-img">
-            <img src="WhatsApp Image 2024-10-23 at 20.55.40.jpeg" alt="Imagem do imóvel 3" class="gallery-img">
-            <img src="WhatsApp Image 2024-10-23 at 20.55.50.jpeg" alt="Imagem do imóvel 4" class="gallery-img">
-            <img src="WhatsApp Image 2024-10-23 at 20.56.00.jpeg" alt="Imagem do imóvel 5" class="gallery-img">
-        </section>
-    </section>
-
-    <!-- Modal for Image Zoom -->
-    <div id="myModal" class="modal">
-        <span class="close">&times;</span>
-        <img class="modal-content" id="imgZoom">
+    <div class="header">
+        <h1>Bem-vindo(a) ao E&E Imóveis</h1>
+        <p>Confira as imagens do imóvel disponível</p>
     </div>
-</div>
+    
+    <div class="content">
+        <!-- Contatos -->
+        <div class="contact-info">
+            <h2>Entre em Contato</h2>
+            <p><strong>Creci:</strong> 56080</p>
+            <p><strong>Email:</strong> <a href="mailto:edna.sampaio@uol.com.br">edna.sampaio@uol.com.br</a></p>
+            <p><strong>WhatsApp Eduardo Sampaio:</strong> <a href="https://wa.me/5511947094356" target="_blank">55 (11) 94709-4356</a></p>
+            <p><strong>WhatsApp Edna Sampaio:</strong> <a href="https://wa.me/5511961948000" target="_blank">55 (11) 96194-8000</a></p>
+        </div>
+        
+        <!-- Detalhes do Imóvel -->
+        <div class="property-details">
+            <h2>Imóveis Disponíveis</h2>
+            <h3>Imóvel localizado na Aclimação</h3>
+            <p>1º andar, 1 por andar, R$350 de condomínio.</p>
+            <p><strong>Valor do Imóvel:</strong> R$ 750.000,00</p>
+            <p>Conforto, privacidade e excelente localização em um dos bairros mais procurados de São Paulo.</p>
+        </div>
 
-<footer>
-    <p>E&E Imóveis © 2024 - Todos os direitos reservados</p>
-</footer>
+        <!-- Galeria de Imagens -->
+        <div class="property-images">
+            <h2>Imagens do Imóvel</h2>
+            <img src="imagens/imagem1.jpg" alt="Imagem do Imóvel 1" onclick="openModal(this.src)">
+            <img src="imagens/imagem2.jpg" alt="Imagem do Imóvel 2" onclick="openModal(this.src)">
+            <img src="imagens/imagem3.jpg" alt="Imagem do Imóvel 3" onclick="openModal(this.src)">
+            <img src="imagens/imagem4.jpg" alt="Imagem do Imóvel 4" onclick="openModal(this.src)">
+        </div>
+    </div>
+    
+    <!-- Modal para Zoom nas Imagens -->
+    <div id="imageModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
 
-<script>
-    // Get the modal
-    var modal = document.getElementById("myModal");
-
-    // Get the image and insert it inside the modal
-    var modalImg = document.getElementById("imgZoom");
-
-    var images = document.querySelectorAll(".gallery-img");
-    images.forEach(function (img) {
-        img.onclick = function () {
-            modal.style.display = "block";
-            modalImg.src = this.src;
-        };
-    });
-
-    // Get the <span> element that closes the modal
-    var span = document.getElementsByClassName("close")[0];
-
-    // When the user clicks on <span> (x), close the modal
-    span.onclick = function () {
-        modal.style.display = "none";
-    };
-
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function (event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
+    <script>
+        function openModal(src) {
+            document.getElementById("imageModal").style.display = "block";
+            document.getElementById("modalImage").src = src;
         }
-    };
-</script>
-
+        function closeModal() {
+            document.getElementById("imageModal").style.display = "none";
+        }
+    </script>
 </body>
 </html>
